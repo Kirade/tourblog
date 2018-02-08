@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Photo, Comment
-from .forms import CommentForm
+from .forms import PhotoForm, CommentForm
 
 
 def photo_list(request):
@@ -19,7 +19,56 @@ def photo_detail(request, pk):
     })
 
 
-def new_comment(request, pk):
+def photo_new(request):
+    
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            photo = form.save(commit=False)
+            photo.author = request.user
+            photo.save()
+            return redirect(photo)
+    else:
+        form = PhotoForm()
+
+    return render(request, 'photos/photo_form.html', {
+        'form': form,
+    })
+
+
+def photo_edit(request, pk):
+    photo = get_object_or_404(Photo, id=pk)
+    
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES, instance=photo)
+
+        if form.is_valid():
+            photo = form.save(commit=False) 
+            photo.author = request.user
+            photo.save()
+            return redirect(photo)
+    else:
+        form = PhotoForm(instance=photo)
+
+    return render(request, 'photos/photo_form.html', {
+        'form': form,
+    })
+
+
+def photo_delete(request, pk):
+    photo = get_object_or_404(Photo, id=pk)
+
+    if request.method == 'POST':
+        photo.delete()
+        return redirect('photos:photo_list')
+    else:
+        return render(request, 'photos/delete_confirm.html', {
+            'photo': photo,
+        })
+
+        
+def new_comment(equest, pk):
     photo = get_object_or_404(Photo, id=pk)
     
     if request.method == 'POST':
@@ -38,6 +87,3 @@ def new_comment(request, pk):
     return render(request, 'photos/comment_form.html', {
         'form': form,
     })
-
-    
-        

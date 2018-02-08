@@ -4,6 +4,7 @@
 {% block content %}
   <h1>Photo List Page</h1>
   <p>{% lorem %}</p>
+  <hr>
   <div class="row">
     {% for photo in photo_list %}
       <div class="col-xs-4">
@@ -18,10 +19,14 @@
       </div>
       {% if forloop.counter|divisibleby:3 %}
       </div>
-      <div class=row">
+      <div class=row>
       {% endif %}
     {% empty %}
       <p>No Photos.</p>
     {% endfor %}
+  </div>
+  
+  <div class='row'>
+    <a class='btn btn-success pull-right' href="{% url 'photos:photo_new' %}">New Photo</a>
   </div>
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'photos/base.html' %}
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+    <h2>Are you sure to delete this Post<h2>
+    <p>{{ photo.title }}</p>
+    <input type="submit" class="btn btn-danger" value="Delete"/>
+    <a href="{{ photo.get_absolute_url }}" class="btn btn-primary">Cancel</a>
+  </form>
+
+{% endblock %}

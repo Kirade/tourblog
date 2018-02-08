@@ -1,0 +1,12 @@
+{% extends 'photos/base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+  <form method='POST' enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn btn-success" type='submit' value="Save"/>
+    <a class="btn btn-warning" href="{% url 'photos:photo_list' %}">Cancel</a>
+  </form>
+{% endblock %}
+
