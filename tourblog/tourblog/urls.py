@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 
 urlpatterns = [
@@ -25,6 +26,10 @@ urlpatterns = [
     url(r'^columns/', include('columns.urls')),
 ]
 
+# Media File serve
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Django debug toolbar
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
