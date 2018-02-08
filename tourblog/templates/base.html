@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load bootstrap3 %}
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>Tour Photo Gallery</title>
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <nav class='nav navbar-default'>
+        </nav>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-3'>
+                    {% block profile %}
+                    {% endblock %}
+                </div>
+                <div class='col-md-9'>
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
