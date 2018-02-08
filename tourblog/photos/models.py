@@ -9,3 +9,12 @@ class Photo(models.Model):
     photo = models.ImageField(upload_to='photo/%Y/%m/%d')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+    related_name='photo_comment_set')
+    photo = models.ForeignKey(Photo, related_name='photo_comment_set')
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
