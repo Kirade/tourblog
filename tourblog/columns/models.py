@@ -14,7 +14,7 @@ class Column(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('column:detail', args=[self.id])
+        return reverse('columns:detail', args=[self.id])
 
 
 class Comment(models.Model):

@@ -1,15 +1,27 @@
 {% extends 'photos/base.html' %}
+{% load imagekit %}
 
 {% block content %}
   <h1>Photo List Page</h1>
   <p>{% lorem %}</p>
   <div class="row">
     {% for photo in photo_list %}
-    <div class="col-xs-3">
-      <a href="#" class="thumbnail">
-        <img src="{% url photo.imgae.url %}"/>
-      </a>
-    </div>
-  {% endfor %}
+      <div class="col-xs-4">
+        <a class="thumbnail" href="#">
+          {% thumbnail "300x300" photo.image %}
+        </a>
+        <ul>
+          <li> Author : {{ photo.author }} </li>
+          <li> Title : {{ photo.title }} </li>
+          <li> created_at : {{ photo.created_at|date:"D d m" }} </li>
+        </ul>
+      </div>
+      {% if forloop.counter|divisibleby:3 %}
+      </div>
+      <div class=row">
+      {% endif %}
+    {% empty %}
+      <p>No Photos.</p>
+    {% endfor %}
   </div>
 {% endblock %}
