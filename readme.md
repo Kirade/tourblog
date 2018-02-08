@@ -7,10 +7,18 @@
 	- 회원가입
 	- 로그인( 기본로그인, 소셜로그인 )
 	- 로그아웃
+- photos
+  - 사진 게시
+  - 사진 세부사항
+  - 사진 게시물 댓글
+  - 사진에 관한 태그
+- columns
+  - 칼럼 게시
+  - 칼럼 세부사항
+  - 칼럼 댓글
 - blog
-	- 사진 포스팅( 발행, 공개 기능 )
-		- 정보 ( 지도 위젯 )
-	- 사진 리스트
+  - 여행 블로그 소개
+  - 지도 위젯
 
 ### 레이아웃
 - 상단 네비게이션 바
@@ -21,9 +29,12 @@
 - accounts 
 	- auth.User 모델
 	- Profile
-- blog 
-	- Photo
-	- Comment
+- Columns
+  - Column
+  - Comment
+- Photos
+  - Photo
+  - Comment
 	- Tag
 
 ## 기술 스택
