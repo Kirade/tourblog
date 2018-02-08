@@ -7,7 +7,7 @@
   <div class="row">
     {% for photo in photo_list %}
       <div class="col-xs-4">
-        <a class="thumbnail" href="#">
+        <a class="thumbnail" href="{% url 'photos:photo_detail' photo.id %}">
           {% thumbnail "300x300" photo.image %}
         </a>
         <ul>

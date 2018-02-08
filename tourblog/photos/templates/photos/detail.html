@@ -1,0 +1,14 @@
+{% extends 'photos/base.html' %}
+{% load imagekit %}
+
+{% block content %} 
+  <h1>This is Photo Detail page!</h1>
+  <ul>
+    {% thumbnail "500x500" photo.image %}
+    <li>Author : {{ photo.author }}</li>
+    <li>Title : {{ photo.title }}</li>
+    <li>Content : {{ photo.content }}</li>
+    <li>Created_at : {{ photo.created_at }}</li>
+    <li>Updated_at : {{ photo.updated_at }}</li>
+  </ul>
+{% endblock %} 
