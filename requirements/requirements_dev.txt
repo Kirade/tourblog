@@ -1,6 +1,7 @@
 django==1.11.10
 pillow
 django-bootstrap3
+django-imagekit
 django-debug-toolbar
 django-extensions
 
