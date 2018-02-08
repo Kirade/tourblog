@@ -9,10 +9,13 @@ def signup(request):
 
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('login')
     else:
         form = SignUpForm()
+    
+    previous_url = request.GET.get('prev')
 
     return render(request, 'accounts/account_form.html', {
         'form': form,
+        'prev': previous_url,
     })

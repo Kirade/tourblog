@@ -14,18 +14,17 @@
       <div class='container'>
         <a class='navbar-brand' href='{% url 'index' %}'>ICON</a>
         <ul class='nav navbar-nav'>
-          <li><a href="#">Home</a></li>
+          <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="#">Photo</a></li>
           <li><a href="#">Column</a></li>
         </ul>
         <ul class='nav navbar-nav navbar-right'>
           {% if user.is_authenticated %}
             <li><a href="#">Hello, {{ user.username }}</a></li>
-            <li><a href="#">Logout</a></li>
-            <li><a href="#">Menu</a></li>
+            <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
           {% else %}
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Sign Up</a></li>
+            <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+            <li><a href="{% url 'signup' %}?prev={{ request.path }}">Sign Up</a></li>
           {% endif %}
         </ul>
       </div>

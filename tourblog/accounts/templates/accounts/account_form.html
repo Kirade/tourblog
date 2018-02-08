@@ -5,7 +5,7 @@
 <form method='POST'>
 	{% csrf_token %}
 	{% bootstrap_form form %}
-	<input type='submit' value='SignUp'>
-	<a href='#' value='Cancel'>
+	<input class='btn btn-success' type='submit' value='SignUp'>
+  <a class='btn btn-default' href='{{ prev }}'>Cancel</a>
 </form>
 {% endblock %}
