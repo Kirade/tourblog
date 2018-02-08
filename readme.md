@@ -32,10 +32,10 @@
 - Columns
   - Column
   - Comment
+  - Tag
 - Photos
   - Photo
   - Comment
-	- Tag
 
 ## 기술 스택
 - Django 
