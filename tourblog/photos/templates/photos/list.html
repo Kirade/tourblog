@@ -1,0 +1,15 @@
+{% extends 'photos/base.html' %}
+
+{% block content %}
+  <h1>Photo List Page</h1>
+  <p>{% lorem %}</p>
+  <div class="row">
+    {% for photo in photo_list %}
+    <div class="col-xs-3">
+      <a href="#" class="thumbnail">
+        <img src="{% url photo.imgae.url %}"/>
+      </a>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock %}
